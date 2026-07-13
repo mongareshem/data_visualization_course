@@ -15,7 +15,5 @@ plt.tick_params(axis='both', labelsize=14)
 plt.xlim(0, 1100)
 plt.ylim(0, 1100000)
 
-# plt.axis('tight')
-# plt.autoscale()
-
-plt.show()
+# plt.show()
+plt.savefig('squares_plot.png', bbox_inches='tight')
