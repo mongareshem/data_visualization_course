@@ -13,9 +13,14 @@ while True:
                 cmap=plt.cm.Blues, edgecolors='none', s=8)
 
     # Emphasize the first and last points.
-    plt.scatter(0, 0, c='green', edgecolors='none', s=20)
+    plt.scatter(0, 0, c='green', edgecolors='none', s=50)
     plt.scatter(rw.x_values[-1], rw.y_values[-1],
-                c='red', edgecolors='none', s=20)
+                c='red', edgecolors='none', s=50)
+
+    # Remove the axes
+    plt.gca().get_xaxis().set_visible(False)
+    plt.gca().get_yaxis().set_visible(False)
+    # plt.axis('off') # An alternative
 
     plt.show()
 
