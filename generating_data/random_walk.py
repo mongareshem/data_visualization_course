@@ -1,9 +1,10 @@
+import pygal
 from random import choice
 
 class RandomWalk:
     """A class to generate random walks"""
 
-    def __init__(self, num_points=5000):
+    def __init__(self, num_points=25):
         """Initialize attributes of walk"""
         self.num_points  = num_points
 
@@ -35,3 +36,20 @@ class RandomWalk:
 
             self.x_values.append(next_x)
             self.y_values.append(next_y)
+
+rw = RandomWalk()
+rw.fill_walk()
+print(max(rw.x_values))
+print(min(rw.x_values))
+frequencies = [rw.x_values.count(value) for value in range(min(rw.x_values), max(rw.x_values)+1)]
+print(frequencies)
+
+hist = pygal.Bar()
+
+hist.title = 'Visualization of the random walk using a histogram'
+hist.x_labels = [str(i) for i in range(min(rw.x_values), max(rw.x_values)+1)]
+hist.x_title = 'Step Value'
+hist.y_title = 'Frequency of the Step Value'
+
+hist.add('RW', frequencies)
+hist.render_to_file('exercises_matplotlib_rw.svg')
